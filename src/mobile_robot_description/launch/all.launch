@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+    <include file="$(find mobile_robot_description)/launch/gazebo.launch"/>
+    <include file="$(find my_robot_controller)/launch/controller.launch"/>
+    <!-- <node name="gazebo_odom" pkg="my_robot_controller" type="gazebo_odom.py" /> -->
+</launch>

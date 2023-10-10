@@ -1,0 +1,6 @@
+<launch>
+    <node name="tf_to_diff" pkg="my_robot_controller" type="tf_to_diff.py" />
+    <node name="dead_reckoning" pkg="my_robot_controller" type="dead_reckoning.py"  />
+    <node name="twist_to_motors" pkg="my_robot_controller" type="twist_to_motors.py" />
+ 
+</launch>

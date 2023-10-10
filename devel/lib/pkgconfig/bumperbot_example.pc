@@ -1,0 +1,8 @@
+prefix=/home/d20/catkin_ws/devel
+
+Name: bumperbot_example
+Description: Description of bumperbot_example
+Version: 0.0.0
+Cflags: -I/home/d20/catkin_ws/devel/include -I/home/d20/catkin_ws/src/bumperbot_example/include
+Libs: -L${prefix}/lib 
+Requires: turtlesim geometry_msgs tf2_ros

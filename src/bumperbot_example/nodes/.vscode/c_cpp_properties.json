@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/duy/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/duy/catkin_ws/src/bumperbot_example/include/**",
+        "/home/duy/catkin_ws/src/hello_world/include/**",
+        "/home/duy/catkin_ws/src/my_robot_controller/include/**",
+        "/home/duy/catkin_ws/src/tutlesimmulation/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
