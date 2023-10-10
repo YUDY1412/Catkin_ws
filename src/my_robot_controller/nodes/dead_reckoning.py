@@ -46,14 +46,13 @@ class D_r(object):
             rospy.loginfo("rotating")
             cur_diff_angle=abs(self.goal_angle)
             self.rotate(self.tul)
-            if (self.goal_angle>cur_diff_angle):
+            if (self.goal_angle<0):
                 self.tul=-self.tul
             self.check=2
           #  rospy.loginfo(self.tul)
         ######################################################################
         rospy.loginfo("Robot moving to the goal point")
         
-
         distance = math.hypot(self.goal_x - self.cur_x, self.goal_y - self.cur_y)
         rospy.loginfo("Robot moving to the goal point [%f]" % (distance))
         rospy.loginfo(self.check)
