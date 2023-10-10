@@ -46,7 +46,7 @@ class D_r(object):
             rospy.loginfo("rotating")
             cur_diff_angle=abs(self.goal_angle)
             self.rotate(self.tul)
-            if (self.goal_angle<0):
+            if (self.goal_angle<0.0):
                 self.tul=-self.tul
             self.check=2
           #  rospy.loginfo(self.tul)
