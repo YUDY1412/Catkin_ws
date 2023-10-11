@@ -30,6 +30,10 @@ class D_r(object):
         msg.pose.pose.orientation.x
         q = tf_conversions.transformations.euler_from_quaternion([msg.pose.pose.orientation.x,msg.pose.pose.orientation.y,msg.pose.pose.orientation.z,msg.pose.pose.orientation.w])
         self.cur_angle = degrees(q[2]) 
+        if self.cur_angle >180:
+            self.cur_angle -= 180*2
+        elif self.cur_angle <-180:
+            self.cur_angle += 180*2
         #rospy.loginfo("self.cur_angle: %d",self.cur_angle)   
     
     def goalcallback(self,msg):
@@ -48,7 +52,7 @@ class D_r(object):
             rospy.loginfo("rotating")
             cur_diff_angle=abs(self.goal_angle)
 
-            if (degrees(math.atan2(self.goal_y-self.cur_y , self.goal_x-self.cur_x))>0):
+            if (self.goal_angle>0):
                 self.tul=self.tulp
             else:
                 self.tul=self.tuln
