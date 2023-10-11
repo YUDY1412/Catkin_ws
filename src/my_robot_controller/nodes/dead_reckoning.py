@@ -48,12 +48,13 @@ class D_r(object):
             rospy.loginfo("rotating")
             cur_diff_angle=abs(self.goal_angle)
 
-            if (self.goal_angle<0.0):
-                self.tul=self.tuln
-            else:
+            if (degrees(math.atan2(self.goal_y-self.cur_y , self.goal_x-self.cur_x))>0):
                 self.tul=self.tulp
+            else:
+                self.tul=self.tuln
             self.check=2
             self.rotate(self.tul)
+            
           #  rospy.loginfo(self.tul)
         ######################################################################
         rospy.loginfo("Robot moving to the goal point")
