@@ -6,6 +6,7 @@
 <robot name="mobile_robot"
 	xmlns:xacro="http://ros.org/wiki/xacro">
 	<xacro:include filename="$(find mobile_robot_description)/urdf/mobile_robot_gazebo.xacro"/>
+	<xacro:include filename="$(find mobile_robot_description)/urdf/camera.xacro"/>
 
 	<xacro:property name="M_PI" value="3.1415926535897931" />
 	<xacro:property name="M_PI_2" value="1.570796327" />
