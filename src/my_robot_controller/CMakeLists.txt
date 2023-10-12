@@ -39,6 +39,7 @@ include_directories(
 
 catkin_install_python(
   PROGRAMS
+  nodes/pid.py
   nodes/tf_to_diff.py
   nodes/twist_to_motors.py
   nodes/dead_reckoning.py
