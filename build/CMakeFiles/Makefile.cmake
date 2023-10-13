@@ -64,6 +64,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/d20/catkin_ws/src/my_robot_controller/nodes/controller.py"
   "/home/d20/catkin_ws/src/my_robot_controller/nodes/dead_reckoning.py"
   "/home/d20/catkin_ws/src/my_robot_controller/nodes/gazebo_odom.py"
+  "/home/d20/catkin_ws/src/my_robot_controller/nodes/pid.py"
   "/home/d20/catkin_ws/src/my_robot_controller/nodes/teleop.py"
   "/home/d20/catkin_ws/src/my_robot_controller/nodes/tf_to_diff.py"
   "/home/d20/catkin_ws/src/my_robot_controller/nodes/twist_to_motors.py"

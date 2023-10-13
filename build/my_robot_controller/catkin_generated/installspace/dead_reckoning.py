@@ -9,25 +9,31 @@ from math import radians, degrees
 class D_r(object):
     def __init__(self):
         self.pose_goal_sub=rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.goalcallback)
-        self.pose_current_sub=rospy.Subscriber("odom1",Odometry,self.odomcallback)
-        self.cmd_vel_pub=rospy.Publisher("cmd_vel",Twist,queue_size=1)
+        self.pose_current_sub=rospy.Subscriber("/my_robot_controller/odom",Odometry,self.odomcallback)
+        self.cmd_vel_pub=rospy.Publisher("/my_robot_controller/cmd_vel",Twist,queue_size=1)
         self.cur_x=0
         self.cur_y=0
         self.cur_angle=0
         self.goal_x=0
         self.goal_y=0
         self.goal_angle =0
-        self.tul=0.2
+        self.tulp=0.2
+        self.tuln=-0.2
         self.delta_angle=0.5
-        self.distance_delta =0.01
+        self.distance_delta =0.1
         self.stop_vel=0
         self.check=0
+        
     def odomcallback(self,msg):
         self.cur_x=msg.pose.pose.position.x
         self.cur_y=msg.pose.pose.position.y
         msg.pose.pose.orientation.x
         q = tf_conversions.transformations.euler_from_quaternion([msg.pose.pose.orientation.x,msg.pose.pose.orientation.y,msg.pose.pose.orientation.z,msg.pose.pose.orientation.w])
         self.cur_angle = degrees(q[2]) 
+        if self.cur_angle >180:
+            self.cur_angle -= 180*2
+        elif self.cur_angle <-180:
+            self.cur_angle += 180*2
         #rospy.loginfo("self.cur_angle: %d",self.cur_angle)   
     
     def goalcallback(self,msg):
@@ -45,15 +51,18 @@ class D_r(object):
             rospy.loginfo("goal_angle: %d",self.goal_angle)
             rospy.loginfo("rotating")
             cur_diff_angle=abs(self.goal_angle)
-            self.rotate(self.tul)
-            if (self.goal_angle>cur_diff_angle):
-                self.tul=-self.tul
+
+            if (self.goal_angle>0):
+                self.tul=self.tulp
+            else:
+                self.tul=self.tuln
             self.check=2
+            self.rotate(self.tul)
+            
           #  rospy.loginfo(self.tul)
         ######################################################################
         rospy.loginfo("Robot moving to the goal point")
         
-
         distance = math.hypot(self.goal_x - self.cur_x, self.goal_y - self.cur_y)
         rospy.loginfo("Robot moving to the goal point [%f]" % (distance))
         rospy.loginfo(self.check)

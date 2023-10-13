@@ -13,8 +13,8 @@ def right_callback(msg):
 
 class DiffTf:
     def __init__(self):
-        self.wheelradius=0.065
-        self.wheel_separation=0.13
+        self.wheelradius=0.033
+        self.wheel_separation=0.092
         self.left_tick_sub=rospy.Subscriber("left_ticks",Int32,self.left_callback) 
         self.right_tick_sub=rospy.Subscriber("right_ticks",Int32,self.right_callback) 
         self.odom_pub=rospy.Publisher("/odom",Odometry,queue_size=10)
