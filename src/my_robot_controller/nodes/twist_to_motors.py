@@ -55,7 +55,7 @@ class TwistToMotors():
 
         self.reset = rospy.Publisher('reset', Bool,queue_size=1)
 
-        rospy.Subscriber('/cmd_vel', Twist, self.twistCallback)
+        rospy.Subscriber('/my_robot_controller/cmd_vel', Twist, self.twistCallback)
     
     
         self.rate = rospy.get_param("~rate", 50)
@@ -100,8 +100,11 @@ class TwistToMotors():
         self.right = 1.0 * self.dx + self.dr
         self.left = 1.0 * self.dx - self.dr
                
-        self.left_mapped = interp(self.left,(-2,2),(-1,1))*self.fixed_speed
-        self.right_mapped = interp(self.right,(-2,2),(-1,1))*self.fixed_speed
+        # self.left_mapped = interp(self.left,(-2,2),(-1,1))*self.fixed_speed
+        # self.right_mapped = interp(self.right,(-2,2),(-1,1))*self.fixed_speed
+        
+        self.left_mapped = self.left *400
+        self.right_mapped = self.right *400
 
         self.left_speed.data = int(self.left_mapped)
         self.right_speed.data =int(self.right_mapped)
